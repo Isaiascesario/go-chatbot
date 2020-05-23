@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+
 	messagehandler "github.com/isaiascesario/go-chatbot/messageHandler"
 	"github.com/isaiascesario/go-chatbot/messenger/core"
 	"github.com/isaiascesario/go-chatbot/utils"
@@ -62,21 +63,15 @@ func (i *impl) CloseConnection() error {
 	return dg.Close()
 }
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if m.Author.ID == s.State.User.ID || !mentionedMe(m.Mentions) {
+	var msgHandled = utils.NormalizeString(m.Content)
+	var msgSlice = strings.Split(msgHandled, " ")
+	if m.Author.ID == s.State.User.ID || (len(msgSlice) < 2 && (msgSlice[0] != "!c" || msgSlice[0] != "!i")) {
 		return
 	}
-	var msgHandled = utils.NormalizeString(strings.ReplaceAll(m.Content, fmt.Sprintf("<@!%s>", me), ""))
-	var msgSlice = strings.Split(msgHandled, " ")
-	var response = messagehandler.Default(msgSlice)
+	var response, err = messagehandler.Default(msgSlice)
+	if err != nil {
+		log.Printf("error on messagehandler.Default %s", err)
+	}
 	log.Printf(`Responding "%s" to %s's message "%s" `, response, m.Author, m.Content)
 	s.ChannelMessageSend(m.ChannelID, response)
-}
-
-func mentionedMe(mentions []*discordgo.User) bool {
-	for _, v := range mentions {
-		if v.ID == me {
-			return true
-		}
-	}
-	return false
 }
