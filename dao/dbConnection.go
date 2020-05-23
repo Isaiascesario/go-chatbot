@@ -4,16 +4,17 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"os"
-	_"github.com/lib/pq"
+
+	// !
+	_ "github.com/lib/pq"
 )
 
 const (
-  host     = "localhost"
-  port     = 5432
-  user     = "postgres"
-  password = "teste123"
-  dbname   = "postgres"
+	host     = "localhost"
+	port     = 5432
+	user     = "postgres"
+	password = "teste123"
+	dbname   = "wow_api_data"
 )
 
 var db *sql.DB
@@ -33,9 +34,9 @@ func init() {
 
 func getConnectionString() string {
 	var connString string
-    connString = fmt.Sprintf("host=%s port=%d user=%s "+
-    "password=%s dbname=%s sslmode=disable",
-    host, port, user, password, dbname)
+	connString = fmt.Sprintf("host=%s port=%d user=%s "+
+		"password=%s dbname=%s sslmode=disable",
+		host, port, user, password, dbname)
 
-  return connString
+	return connString
 }
