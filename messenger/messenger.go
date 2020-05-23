@@ -1,8 +1,8 @@
 package messenger
 
 import (
-	"temp/disgo/messenger/core"
-	"temp/disgo/messenger/discord"
+	"github.com/isaiascesario/go-chatbot/messenger/core"
+	"github.com/isaiascesario/go-chatbot/messenger/discord"
 )
 
 func init() {

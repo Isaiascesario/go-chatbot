@@ -3,8 +3,9 @@ package messagehandler
 import (
 	"log"
 	"math/rand"
-	"temp/disgo/utils"
-	"temp/disgo/yaml"
+
+	"github.com/isaiascesario/go-chatbot/utils"
+	"github.com/yaguetto/go-chatbot/yaml"
 )
 
 var defaultContent map[string]yaml.MessageList

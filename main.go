@@ -5,8 +5,8 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"temp/disgo/messenger"
-	"temp/disgo/messenger/discord"
+	"github.com/isaiascesario/go-chatbot/messenger"
+	"github.com/isaiascesario/go-chatbot/messenger/discord"
 )
 
 func main() {

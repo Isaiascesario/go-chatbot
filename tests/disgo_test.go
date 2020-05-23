@@ -2,7 +2,7 @@ package disgo_test
 
 import (
 	"log"
-	"temp/disgo/utils"
+	"github.com/isaiascesario/go-chatbot/utils"
 	"testing"
 )
 

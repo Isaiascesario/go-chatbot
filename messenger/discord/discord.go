@@ -7,9 +7,9 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
-	messagehandler "temp/disgo/messageHandler"
-	"temp/disgo/messenger/core"
-	"temp/disgo/utils"
+	messagehandler "github.com/isaiascesario/go-chatbot/messageHandler"
+	"github.com/isaiascesario/go-chatbot/messenger/core"
+	"github.com/isaiascesario/go-chatbot/utils"
 
 	"github.com/bwmarrin/discordgo"
 )
